@@ -3,6 +3,12 @@
 ## Project Overview
 This project implements a basic text analysis tool to preprocess articles and analyze word frequencies. The application processes text files on a specific topic, removes stop words, calculates basic statistics, and ranks words by frequency.
 
+## About Us:
+William Ehlers: I am a sophomore at Fairfield University studying Computer Science and Finance. I am from Milford, Connecticut. 
+Viktor Nikolov: Junior Student at Fairfield. Computer Science major. 
+I am from Plovdiv, Bulgaria. 
+Chris Smith: I am a sophomore at Fairfield University studying Computer Science. I am from Albany, New York.
+
 ## Milestone 1: Preprocessing Text Files
 
 ### Features:
