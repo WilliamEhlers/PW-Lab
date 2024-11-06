@@ -1,51 +1,52 @@
-// Source code is decompiled from a .class file using FernFlower decompiler.
 package main;
 
 import java.io.File;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
-public class Main {
-   public Main() {
-   }
+public class unique {
 
-   public static void main(String[] var0) {
-      String var1 = "C:\\Users\\billy\\OneDrive\\Documents\\PW-Lab-main\\main\\files project";
-      String var2 = "C:\\Users\\billy\\OneDrive\\Documents\\PW-Lab-main\\main\\stopwords.txt";
-      File var3 = new File(var1);
-      if (var3.isDirectory()) {
-         File[] var4 = var3.listFiles();
-         if (var4 != null && var4.length > 0) {
-            System.out.println("Which file do you want to read?");
+    public static void main(String[] args) {
+        String directoryPath = "C:\\Users\\billy\\OneDrive\\Documents\\PW-Lab-main\\main\\files project";
+        String stopWordsFilePath = "C:\\Users\\billy\\OneDrive\\Documents\\PW-Lab-main\\main\\stopwords.txt";
+        String positiveWordsFilePath = "C:\\Users\\billy\\OneDrive\\Documents\\PW-Lab-main\\main\\positivewords.txt";
+        String negativeWordsFilePath = "C:\\Users\\billy\\OneDrive\\Documents\\PW-Lab-main\\main\\negativewords.txt";
 
-            for(int var5 = 0; var5 < var4.length; ++var5) {
-               if (var4[var5].isFile()) {
-                  System.out.println(var5 + 1 + ": " + var4[var5].getName());
-               }
-            }
+        File directory = new File(directoryPath);
 
-            Scanner var11 = new Scanner(System.in);
-            System.out.print("Please select the number of the file that you want to use: ");
-            int var6 = var11.nextInt();
-            if (var6 > 0 && var6 <= var4.length && var4[var6 - 1].isFile()) {
-               File var7 = var4[var6 - 1];
-               System.out.println("You have selected: " + var7.getName());
-               TextProcessor var8 = new TextProcessor(var2);
-               List var9 = var8.processFileForUnique(var7);
-               Statistics var10 = new Statistics(var9);
-               var10.displayStatistics();
+        if (directory.isDirectory()) {
+            File[] files = directory.listFiles();
+
+            if (files != null && files.length > 0) {
+                TextProcessor processor = new TextProcessor(stopWordsFilePath, positiveWordsFilePath, negativeWordsFilePath);
+
+                for (File file : files) {
+                    if (file.isFile()) {
+                        System.out.println("Processing file: " + file.getName());
+                        List<String> filteredWords = processor.processFileForUnique(file);
+                        Statistics stats = new Statistics(filteredWords);
+
+                        // Display most repeated words
+                        System.out.println("Most Repeated Words in " + file.getName() + ":");
+                        stats.displayStatistics();
+
+                        // Analyze tone
+                        Map<String, Integer> toneCounts = processor.analyzeTone(filteredWords);
+                        int positiveCount = toneCounts.get("positive");
+                        int negativeCount = toneCounts.get("negative");
+
+                        System.out.println("Positive words count: " + positiveCount);
+                        System.out.println("Negative words count: " + negativeCount);
+
+                        String tone = positiveCount > negativeCount ? "Positive" : "Negative";
+                        System.out.println("Overall tone for " + file.getName() + ": " + tone);
+                        System.out.println();
+                    }
+                }
             } else {
-               System.out.println("Invalid selection.");
+                System.out.println("No files found in the directory.");
             }
-
-            var11.close();
-         } else {
-            System.out.println("There are no files in this folder.");
-         }
-      } else {
-         System.out.println("That is not a valid directory.");
-      }
-
-   }
+        } else {
+            System.out.println("Invalid directory.");
+        }
+    }
 }
-
