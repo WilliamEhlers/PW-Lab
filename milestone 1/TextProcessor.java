@@ -5,28 +5,29 @@ import java.util.*;
 
 public class TextProcessor {
     private final Set<String> stopWords;
+    private final Set<String> positiveWords;
+    private final Set<String> negativeWords;
 
-    // Constructor that receives the path of the stop words file
-    public TextProcessor(String stopWordsFilePath) {
-        this.stopWords = loadStopWords(stopWordsFilePath);
+    // Constructor that loads stopwords, positive, and negative words
+    public TextProcessor(String stopWordsFilePath, String positiveWordsFilePath, String negativeWordsFilePath) {
+        this.stopWords = loadWordsFromFile(stopWordsFilePath);
+        this.positiveWords = loadWordsFromFile(positiveWordsFilePath);
+        this.negativeWords = loadWordsFromFile(negativeWordsFilePath);
     }
 
-    // Method to load stopwords
-    private Set<String> loadStopWords(String stopWordsFilePath) {
-        Set<String> stopWords = new HashSet<>();
-        try (BufferedReader br = new BufferedReader(new FileReader(stopWordsFilePath))) {
+    private Set<String> loadWordsFromFile(String filePath) {
+        Set<String> words = new HashSet<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = br.readLine()) != null) {
-                stopWords.add(line.trim().toLowerCase()); // Add each stop word to the set
+                words.add(line.trim().toLowerCase());
             }
-            System.out.println("Stop words correctly loaded from file");
         } catch (IOException e) {
-            System.err.println("Error loading stop words: " + e.getMessage());
+            System.err.println("Error loading words from " + filePath + ": " + e.getMessage());
         }
-        return stopWords;
+        return words;
     }
 
-    // Method to process a file and return filtered words (ignores stopwords)
     public List<String> processFileForUnique(File file) {
         List<String> filteredWords = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
@@ -43,6 +44,24 @@ public class TextProcessor {
         } catch (IOException e) {
             System.err.println("Error processing file: " + file.getName());
         }
-        return filteredWords;  // Return the filtered words
+        return filteredWords;
+    }
+
+    public Map<String, Integer> analyzeTone(List<String> words) {
+        int positiveCount = 0;
+        int negativeCount = 0;
+
+        for (String word : words) {
+            if (positiveWords.contains(word)) {
+                positiveCount++;
+            } else if (negativeWords.contains(word)) {
+                negativeCount++;
+            }
+        }
+
+        Map<String, Integer> toneCounts = new HashMap<>();
+        toneCounts.put("positive", positiveCount);
+        toneCounts.put("negative", negativeCount);
+        return toneCounts;
     }
 }
