@@ -25,6 +25,10 @@ I am from Plovdiv, Bulgaria.
 1. **Run `Main.java`**: It will prompt you to choose a file from a directory.
 2. **Preprocessing**: The selected file will be processed, displaying statistics and word rankings.
 
+## UML Diagram:
+![UML DIAGRAM](https://github.com/user-attachments/assets/911e38e9-4be7-4ac2-a4ca-1f08834bddc3)
+
+
 ## Milestone 2: Possitive attitude or negative attitude? 
 
 ## Features:
@@ -52,3 +56,7 @@ Explanation: (Showing the positive and negative word count, and unique words fro
 
 ![shows which text is more possitive](https://github.com/user-attachments/assets/6bb35960-662c-4b92-8dd0-5fa71e349dea)
 Explanation: (Shows the positive and negative word count, and unique words from text 2 and tell you wich one has more positive attitude) 
+
+## UML Diagram: 
+
+![uml_diagram](https://github.com/user-attachments/assets/651088f0-ef8c-469b-9710-c7e205cd4ded)
