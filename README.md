@@ -47,7 +47,7 @@ I am from Plovdiv, Bulgaria.
 ## Output (Screenshots):
 
 
-![1](https://github.com/user-attachments/assets/d42691ab-ad55-4151-ae64-a042558f37c2) (\n)
+![1](https://github.com/user-attachments/assets/d42691ab-ad55-4151-ae64-a042558f37c2) 
 Explanation: (Showing the positive and negative word count, and unique words of text 1)
 
 ![shows which text is more possitive](https://github.com/user-attachments/assets/6bb35960-662c-4b92-8dd0-5fa71e349dea)
