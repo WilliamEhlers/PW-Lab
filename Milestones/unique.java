@@ -6,10 +6,10 @@ import java.util.*;
 public class unique {
 
     public static void main(String[] args) {
-        String directoryPath = "C:\\Users\\billy\\OneDrive\\Documents\\PW-Lab-main\\main\\files project";
-        String stopWordsFilePath = "C:\\Users\\billy\\OneDrive\\Documents\\PW-Lab-main\\main\\stopwords.txt";
-        String positiveWordsFilePath = "C:\\Users\\billy\\OneDrive\\Documents\\PW-Lab-main\\main\\positivewords.txt";
-        String negativeWordsFilePath = "C:\\Users\\billy\\OneDrive\\Documents\\PW-Lab-main\\main\\negativewords.txt";
+        String directoryPath = "C:\\Users\\Viktor\\Desktop\\FAIRFIELD\\JUNIOR\\PRIMER TRIMESTTRE\\PROGRAMMING WORKSHOP LAB\\files project\\";
+        String stopWordsFilePath = "C:\\Users\\Viktor\\Desktop\\FAIRFIELD\\JUNIOR\\PRIMER TRIMESTTRE\\PROGRAMMING WORKSHOP LAB\\stopwords.txt";
+        String positiveWordsFilePath = "C:\\Users\\Viktor\\Desktop\\FAIRFIELD\\JUNIOR\\PRIMER TRIMESTTRE\\PROGRAMMING WORKSHOP LAB\\MILESTONES\\Milestone 2\\files\\positive-words.txt";
+        String negativeWordsFilePath = "C:\\Users\\Viktor\\Desktop\\FAIRFIELD\\JUNIOR\\PRIMER TRIMESTTRE\\PROGRAMMING WORKSHOP LAB\\MILESTONES\\Milestone 2\\files\\negative-words.txt";
 
         File directory = new File(directoryPath);
 
