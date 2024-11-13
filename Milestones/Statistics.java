@@ -2,6 +2,7 @@ package main;
 
 import java.util.*;
 
+
 public class Statistics {
     private final Map<String, Integer> wordFrequencies;
 
