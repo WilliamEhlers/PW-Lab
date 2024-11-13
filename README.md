@@ -48,7 +48,7 @@ I am from Plovdiv, Bulgaria.
 
 
 ![1](https://github.com/user-attachments/assets/d42691ab-ad55-4151-ae64-a042558f37c2) 
-Explanation: (Showing the positive and negative word count, and unique words of text 1)
+Explanation: (Showing the positive and negative word count, and unique words from text 1)
 
 ![shows which text is more possitive](https://github.com/user-attachments/assets/6bb35960-662c-4b92-8dd0-5fa71e349dea)
 Explanation: (Shows the positive and negative word count, and unique words from text 2 and tell you wich one has more positive attitude) 
