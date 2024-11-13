@@ -6,18 +6,18 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        String directoryPath = "C:\\Users\\Viktor\\Desktop\\FAIRFIELD\\JUNIOR\\PRIMER TRIMESTTRE\\PROGRAMMING WORKSHOP LAB\\files project\\";
+        String stopWordsFilePath = "C:\\Users\\Viktor\\Desktop\\FAIRFIELD\\JUNIOR\\PRIMER TRIMESTTRE\\PROGRAMMING WORKSHOP LAB\\MILESTONES\\Milestone 2\\files\\stopwords.txt";
+        String positiveWordsFilePath = "C:\\Users\\Viktor\\Desktop\\FAIRFIELD\\JUNIOR\\PRIMER TRIMESTTRE\\PROGRAMMING WORKSHOP LAB\\MILESTONES\\Milestone 2\\files\\positive-words.txt";
+        String negativeWordsFilePath = "C:\\Users\\Viktor\\Desktop\\FAIRFIELD\\JUNIOR\\PRIMER TRIMESTTRE\\PROGRAMMING WORKSHOP LAB\\MILESTONES\\Milestone 2\\files\\negative-words.txt";
 
-        String directoryPath = "C:\\Users\\billy\\OneDrive\\Documents\\PW-Lab-main\\main\\files project";
-        String stopWordsFilePath = "C:\\Users\\billy\\OneDrive\\Documents\\PW-Lab-main\\main\\stopwords.txt";
-        String positiveWordsFilePath = "C:\\Users\\billy\\OneDrive\\Documents\\PW-Lab-main\\main\\positivewords.txt";
-        String negativeWordsFilePath = "C:\\Users\\billy\\OneDrive\\Documents\\PW-Lab-main\\main\\negativewords.txt";
-        
         File directory = new File(directoryPath);
 
         if (directory.isDirectory()) {
             File[] files = directory.listFiles();
-            if (files != null && files.length > 0) {  
-                System.out.println("Which file do you want to read?");
+
+            if (files != null && files.length > 0) {
+                System.out.println("Available files:");
                 for (int i = 0; i < files.length; i++) {
                     if (files[i].isFile()) {
                         System.out.println((i + 1) + ": " + files[i].getName());
@@ -25,37 +25,52 @@ public class Main {
                 }
 
                 Scanner scanner = new Scanner(System.in);
-                System.out.print("Please select the number of the file that you want to use: ");
-                int choice = scanner.nextInt();
 
-                if (choice > 0 && choice <= files.length && files[choice - 1].isFile()) {
-                    File selectedFile = files[choice - 1];
-                    System.out.println("You have selected: " + selectedFile.getName());
+                // Select two files for comparison
+                System.out.print("Select the number of the first file to analyze: ");
+                int choice1 = scanner.nextInt();
+                System.out.print("Select the number of the second file to analyze: ");
+                int choice2 = scanner.nextInt();
+
+                if (choice1 > 0 && choice1 <= files.length && choice2 > 0 && choice2 <= files.length) {
+                    File file1 = files[choice1 - 1];
+                    File file2 = files[choice2 - 1];
 
                     TextProcessor processor = new TextProcessor(stopWordsFilePath, positiveWordsFilePath, negativeWordsFilePath);
-                    
-                    List<String> filteredWords = processor.processFileForUnique(selectedFile);
-                    Statistics stats = new Statistics(filteredWords);
-                    stats.displayStatistics();
 
-                    var toneCounts = processor.analyzeTone(filteredWords);
-                    System.out.println("Positive words count: " + toneCounts.get("positive"));
-                    System.out.println("Negative words count: " + toneCounts.get("negative"));
-                    
-                    String tone = toneCounts.get("positive") > toneCounts.get("negative") ? "Positive" : "Negative";
-                    System.out.println("Overall tone for " + selectedFile.getName() + ": " + tone);
+                    // Process the first file with statistics
+                    System.out.println("\nProcessing " + file1.getName());
+                    List<String> words1 = processor.processFileForUnique(file1);
+                    Statistics stats1 = new Statistics(words1);
+                    stats1.displayStatistics();
+
+                    var toneCounts1 = processor.analyzeTone(words1);
+                    System.out.println("Positive words count for " + file1.getName() + ": " + toneCounts1.get("positive"));
+                    System.out.println("Negative words count for " + file1.getName() + ": " + toneCounts1.get("negative"));
+
+                    // Process the second file with statistics
+                    System.out.println("\nProcessing " + file2.getName());
+                    List<String> words2 = processor.processFileForUnique(file2);
+                    Statistics stats2 = new Statistics(words2);
+                    stats2.displayStatistics();
+
+                    var toneCounts2 = processor.analyzeTone(words2);
+                    System.out.println("Positive words count for " + file2.getName() + ": " + toneCounts2.get("positive"));
+                    System.out.println("Negative words count for " + file2.getName() + ": " + toneCounts2.get("negative"));
+
+                    // Compare the positive tone counts
+                    String morePositiveFile = toneCounts1.get("positive") > toneCounts2.get("positive") ? file1.getName() : file2.getName();
+                    System.out.println("\nThe file with a more positive attitude is: " + morePositiveFile);
 
                 } else {
                     System.out.println("Invalid selection.");
                 }
-
                 scanner.close();
             } else {
-                System.out.println("There are no files in this folder.");
+                System.out.println("No files found in the directory.");
             }
-
         } else {
-            System.out.println("That is not a valid directory.");
+            System.out.println("Invalid directory.");
         }
     }
 }
