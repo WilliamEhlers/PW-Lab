@@ -6,10 +6,31 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        String directoryPath = "C:\\Users\\Viktor\\Desktop\\FAIRFIELD\\JUNIOR\\PRIMER TRIMESTTRE\\PROGRAMMING WORKSHOP LAB\\files project\\";
-        String stopWordsFilePath = "C:\\Users\\Viktor\\Desktop\\FAIRFIELD\\JUNIOR\\PRIMER TRIMESTTRE\\PROGRAMMING WORKSHOP LAB\\MILESTONES\\Milestone 2\\files\\stopwords.txt";
-        String positiveWordsFilePath = "C:\\Users\\Viktor\\Desktop\\FAIRFIELD\\JUNIOR\\PRIMER TRIMESTTRE\\PROGRAMMING WORKSHOP LAB\\MILESTONES\\Milestone 2\\files\\positive-words.txt";
-        String negativeWordsFilePath = "C:\\Users\\Viktor\\Desktop\\FAIRFIELD\\JUNIOR\\PRIMER TRIMESTTRE\\PROGRAMMING WORKSHOP LAB\\MILESTONES\\Milestone 2\\files\\negative-words.txt";
+        int y=0;
+        Scanner sc=new Scanner(System.in);
+        String directoryPath="";
+        while(y>=0) {
+            System.out.println("Select a topic that you would like to read articles for.");
+            System.out.println("1. environment");
+            System.out.println("2. science");
+            System.out.println("3. social studies");
+            y = sc.nextInt();
+            if (y == 1) {
+                directoryPath = "";
+                break;
+            } else if (y == 2) {
+                directoryPath = "";
+                break;
+            } else if (y == 3) {
+                directoryPath = "";
+                break;
+            } else {
+                System.out.println("Please select a valid option!");
+            }
+        }
+        String stopWordsFilePath = "C:\\Users\\savag\\IdeaProjects\\ProjMilestone2\\src\\stopwords.txt";
+        String positiveWordsFilePath = "C:\\Users\\savag\\IdeaProjects\\ProjMilestone2\\src\\positivewords.txt";
+        String negativeWordsFilePath = "C:\\Users\\savag\\IdeaProjects\\ProjMilestone2\\src\\negativewords.txt";
 
         File directory = new File(directoryPath);
 
