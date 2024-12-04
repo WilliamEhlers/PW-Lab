@@ -16,13 +16,13 @@ public class Main {
             System.out.println("3. social studies");
             y = sc.nextInt();
             if (y == 1) {
-                directoryPath = "";
+                directoryPath = "C:\\Users\\savag\\Computer Science\\src\\Programming Workshop Lab\\environment";
                 break;
             } else if (y == 2) {
-                directoryPath = "";
+                directoryPath = "C:\\Users\\savag\\Computer Science\\src\\Programming Workshop Lab\\science";
                 break;
             } else if (y == 3) {
-                directoryPath = "";
+                directoryPath = "C:\\Users\\savag\\Computer Science\\src\\Programming Workshop Lab\\social studies";
                 break;
             } else {
                 System.out.println("Please select a valid option!");
@@ -31,6 +31,13 @@ public class Main {
         String stopWordsFilePath = "C:\\Users\\savag\\IdeaProjects\\ProjMilestone2\\src\\stopwords.txt";
         String positiveWordsFilePath = "C:\\Users\\savag\\IdeaProjects\\ProjMilestone2\\src\\positivewords.txt";
         String negativeWordsFilePath = "C:\\Users\\savag\\IdeaProjects\\ProjMilestone2\\src\\negativewords.txt";
+
+        System.out.println("Would you like to add a new file?(Please enter 'yes' or 'no')");
+        String response = sc.next();
+        if(response.equals("yes")) {
+            System.out.println("Please enter the path to the folder of text files that you would like to add");
+            String newFile = sc.next();
+        }
 
         File directory = new File(directoryPath);
 
@@ -44,6 +51,8 @@ public class Main {
                         System.out.println((i + 1) + ": " + files[i].getName());
                     }
                 }
+
+
 
                 Scanner scanner = new Scanner(System.in);
 
