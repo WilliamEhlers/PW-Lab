@@ -2,7 +2,6 @@ package main;
 
 import java.util.*;
 
-
 public class Statistics {
     private final Map<String, Integer> wordFrequencies;
 
@@ -49,5 +48,10 @@ public class Statistics {
     // Method to get the frequency of a specific word
     public int getWordFrequency(String word) {
         return wordFrequencies.getOrDefault(word, 0);
+    }
+
+    // Method to get the richest vocabulary
+    public void getRichestVocabulary(){
+
     }
 }
