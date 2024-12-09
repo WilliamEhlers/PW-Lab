@@ -1,56 +1,97 @@
+### Extended README for Milestone 3
+
 # Basic Text Analysis Application
 
 ## Project Overview
-This project implements a basic text analysis tool to preprocess articles and analyze word frequencies. The application processes text files on a specific topic, removes stop words, calculates basic statistics, and ranks words by frequency.
+This project implements a basic text analysis tool to preprocess articles and analyze word frequencies. The application processes text files on a specific topic, removes stop words, calculates basic statistics, analyzes sentiment, and ranks words by frequency. It further allows for comparison between articles to identify tone and vocabulary richness. The final milestone introduces a text-based user interface for improved interaction and functionality.
 
 ## About Us:
-**William Ehlers**: I am a sophomore at Fairfield University studying Computer Science and Finance. I am from Milford, Connecticut. 
-**Viktor Nikolov**: Junior Student at Fairfield. Computer Science major. 
-I am from Plovdiv, Bulgaria. 
-**Chris Smith**: I am a sophomore at Fairfield University studying Computer Science. I am from Albany, New York.
+- **William Ehlers**: Sophomore at Fairfield University studying Computer Science and Finance. From Milford, Connecticut.
+- **Viktor Nikolov**: Junior at Fairfield University majoring in Computer Science. From Plovdiv, Bulgaria.
+- **Chris Smith**: Sophomore at Fairfield University studying Computer Science. From Albany, New York.
 
+---
 
 ## Milestone 1: Preprocessing Text Files
 
 ### Features:
-- **Stop Words Removal**: Removes common words like "and", "but", etc.
-- **Basic Statistics**: Calculates the number of words and sentences.
-- **Word Frequency Ranking**: Ranks words based on how often they appear in the text.
+- **Stop Words Removal**: Removes common words like "and," "but," etc.
+- **Basic Statistics**: Calculates word and sentence counts.
+- **Word Frequency Ranking**: Ranks words by frequency in the text.
 
 ### Setup:
 1. **Articles**: Store articles on the same topic in a folder as `.txt` files.
-2. **Stop Words**: Use a `stopwords.txt` file with a list of words to ignore during processing. [Example list](https://en.wikipedia.org/wiki/Stop_words).
+2. **Stop Words**: Use a `stopwords.txt` file with a list of words to ignore during processing.
 
 ### Usage:
-1. **Run `Main.java`**: It will prompt you to choose a file from a directory.
-2. **Preprocessing**: The selected file will be processed, displaying statistics and word rankings.
+1. **Run `Main.java`**: Prompts you to choose a file from a directory.
+2. **Preprocessing**: Processes the selected file and displays statistics and word rankings.
 
-## UML Diagram:
-![UML DIAGRAM](https://github.com/user-attachments/assets/911e38e9-4be7-4ac2-a4ca-1f08834bddc3)
+---
 
+## Milestone 2: Article Comparison and Sentiment Analysis
 
-## Milestone 2: Possitive attitude or negative attitude? 
+### Features:
+- **Vocabulary Richness**: Determines which article uses the richest vocabulary.
+- **Word Frequency Ranking**: Identifies and ranks the most repeated words in each article.
+- **Tone Analysis**: Compares articles for positive and negative attitudes using predefined word lists (`positive-words.txt` and `negative-words.txt`).
 
-## Features:
-- **Stop Words Removal**: Filters out common stop words (e.g., "and", "the") to focus on meaningful words within the text.
-- **Tone Analysis**: Analyzes the text for tone by counting positive and negative words based on predefined lists, allowing for sentiment assessment.
-- **Basic Statistics**: Calculates key statistics, including the total number of words, unique word count, and displays word frequency rankings.
-- **Word Frequency Ranking**: Provides a ranked list of words based on frequency, helping identify prominent themes or keywords in the text.
-- **Multi-File Comparison**: Allows for the selection of two articles, analyzes them individually, and compares their tone to determine which one expresses a more positive attitude.
+### Setup:
+- **Articles**: Store all articles in the same folder as `.txt` files.
+- **Stop Words**: Include a `stopwords.txt` file to exclude common words.
+- **Sentiment Lists**: Add `positive-words.txt` and `negative-words.txt` for sentiment analysis.
 
-## Setup:
-- **Articles**: Place all articles for analysis within the same folder as .txt files.
-- **Stop Words**: Include a stopwords.txt file containing common words to exclude during processing.
-- **Positive and Negative Word Lists**: Add positive-words.txt and negative-words.txt files containing words to be used for tone analysis.
+### Usage:
+- **Run `Main.java`**: Select two articles for analysis.
+- **Individual Analysis**: Displays statistics and word frequency for each file.
+- **Tone Comparison**: Identifies which article has a more positive tone.
 
-## Usage:
-- **Run Main.java**: Upon execution, the program will prompt you to select two files for analysis.
-- **Individual Analysis**: The program will display statistics for each file, including word frequency and positive and negative word counts.
-- **Tone Comparison**: After individual analysis, the program compares the positivity levels of both files and identifies the one with a more positive tone.
+---
 
-## Output (Screenshots):
+## Milestone 3: Interactive User Interface and Extended Features
 
+### New Features:
+- **Topic Selection**: Users can select a specific topic (directory of articles) from the library for analysis.
+- **Interactive Analysis**: Allows users to run analysis for a selected topic, including:
+  - Basic statistics for all articles within the topic.
+  - Word frequency ranking.
+  - Sentiment analysis.
+  - Vocabulary richness.
+- **Add New Articles**: Users can provide new articles (text files), which are added to the library and analyzed.
+- **Refactoring**: Improved the application's structure for maintainability and scalability:
+  - Consolidated and optimized classes for modular design.
+  - Enhanced readability and efficiency of the codebase.
 
+### Setup:
+1. Organize articles in directories under the library folder. Each directory represents a topic.
+2. Ensure `stopwords.txt`, `positive-words.txt`, and `negative-words.txt` are available in the same folder as the application.
+
+### Usage:
+1. **Run `Main.java`**:
+   - Choose a topic from the list of directories.
+   - Run analyses on the selected topic.
+   - Add new articles to an existing or new topic.
+2. **View Results**:
+   - Output includes comprehensive statistics, sentiment scores, and vocabulary insights for the selected topic.
+
+---
+
+## Refactoring Summary:
+### Proposed Classes:
+- **TextProcessor**: Handles text preprocessing, including stop word removal and frequency calculation.
+- **ArticleAnalyzer**: Manages individual article analysis, including sentiment scoring and vocabulary richness.
+- **TopicManager**: Handles the selection and organization of topics (directories).
+- **UserInterface**: Implements the text-based interaction with the user.
+
+### Refactoring Motivation:
+1. **TextProcessor**: Streamlined to separate preprocessing logic, reducing redundancy.
+2. **ArticleAnalyzer**: Focuses on analysis-specific tasks for better separation of concerns.
+3. **TopicManager**: Simplifies topic handling and article addition processes.
+4. **UserInterface**: Centralized user interaction to make the application intuitive and maintainable.
+
+---
+
+## Deliverables:
 ![1](https://github.com/user-attachments/assets/d42691ab-ad55-4151-ae64-a042558f37c2) 
 Explanation: (Showing the positive and negative word count, and unique words from text 1)
 
@@ -58,5 +99,4 @@ Explanation: (Showing the positive and negative word count, and unique words fro
 Explanation: (Shows the positive and negative word count, and unique words from text 2 and tell you wich one has more positive attitude) 
 
 ## UML Diagram: 
-
 ![uml_diagram](https://github.com/user-attachments/assets/651088f0-ef8c-469b-9710-c7e205cd4ded)
