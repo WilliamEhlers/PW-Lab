@@ -98,5 +98,12 @@ Explanation: (Showing the positive and negative word count, and unique words fro
 ![shows which text is more possitive](https://github.com/user-attachments/assets/6bb35960-662c-4b92-8dd0-5fa71e349dea)
 Explanation: (Shows the positive and negative word count, and unique words from text 2 and tell you wich one has more positive attitude) 
 
+Mileston 3 output: ![image](https://github.com/user-attachments/assets/9aefb7e4-7256-4c9f-8afd-d5de3da643e8)
+(program ask you which type of document you want to select and if you want to add a new one, in this case the option is no, so it process with the files comparation.)
+
+If yes, has to provide the path of the file that you want to implement. ![image](https://github.com/user-attachments/assets/9ecea88e-1b72-4e16-9c6d-8973035dd020)
+
+
+
 ## UML Diagram: 
 ![uml_diagram](https://github.com/user-attachments/assets/651088f0-ef8c-469b-9710-c7e205cd4ded)
